@@ -24,4 +24,4 @@ export const lightTheme = {
     timelineLine: '#718096',
     timelineDot: '#2d3748',
     skillBarBg: '#4a5568',
-  };
+  };    
