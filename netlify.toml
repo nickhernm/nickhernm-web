@@ -1,6 +1,10 @@
 [build]
   command = "npm run build"
   publish = "build"
+  environment = { NODE_OPTIONS = "--openssl-legacy-provider" }
+
+[context.production.environment]
+  NODE_VERSION = "16.14.0" # Especifica una versión compatible con Webpack y tu proyecto
 
 [[redirects]]
   from = "/*"
