@@ -3,4 +3,9 @@
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "16.14.0"  # Especifica una versión que no tenga problemas con OpenSSL
+  NODE_VERSION = "16.14.0"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

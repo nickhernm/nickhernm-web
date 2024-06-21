@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
+import { lightTheme, darkTheme } from './themes';
 import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
@@ -15,6 +15,7 @@ import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   const [theme, setTheme] = useState('light');
+
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
