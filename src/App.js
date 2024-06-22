@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './themes';
-import GlobalStyles from './components/GlobalStyles';
+import GlobalStyles from './styles/GlobalStyles';
 import './styles/CVStyles.css';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
@@ -15,6 +15,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThemeToggle from './components/ThemeToggle';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import DifferentialEquations from './blog/DifferentialEquations';
+import TypesOfDataStructuresTrees from './blog/TypesOfDataStructuresTrees';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -38,6 +40,8 @@ function App() {
           <Route path="/repositories" element={<Repositories />} />
           <Route path="/cv" element={<CV />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog/DifferentialEquations" element={<DifferentialEquations />} />
+          <Route path="/blog/TypesOfDataStructuresTrees" element={<TypesOfDataStructuresTrees />} />
         </Routes>
         <Footer />
       </Router>

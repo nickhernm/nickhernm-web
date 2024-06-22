@@ -1,61 +1,42 @@
-// src/components/CV.js
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import BasicInfo from './sections/BasicInfo';
 import WorkExperience from './sections/WorkExperience';
 import Education from './sections/Education';
 import Projects from './sections/Projects';
 import Skills from './sections/Skills';
 import Interests from './sections/Interests';
-import Sidebar from './Sidebar';
-import '../styles/CVStyles.css';
 
-const sections = ['Basics', 'Work', 'Education', 'Projects', 'Skills', 'Interests'];
+const CVWrapper = styled.div`
+  margin-left: 220px; /* Deja espacio para la barra lateral */
+  padding: 2rem;
+`;
 
-const CV = () => {
-  const [activeSection, setActiveSection] = useState('Basics');
+const Section = styled.section`
+  margin-bottom: 2rem;
+`;
 
-  const handleScroll = () => {
-    const offsets = sections.map(section => ({
-      section,
-      offset: document.getElementById(section).offsetTop,
-    }));
-    const scrollPosition = window.scrollY + 200;
-    const currentSection = offsets.reduce((prev, curr) =>
-      scrollPosition >= curr.offset ? curr.section : prev, sections[0]);
-    setActiveSection(currentSection);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <div className="cv-container">
-      <Sidebar sections={sections} activeSection={activeSection} />
-      <div className="cv-content">
-        <div id="Basics">
-          <BasicInfo />
-        </div>
-        <div id="Work">
-          <WorkExperience />
-        </div>
-        <div id="Education">
-          <Education />
-        </div>
-        <div id="Projects">
-          <Projects />
-        </div>
-        <div id="Skills">
-          <Skills />
-        </div>
-        <div id="Interests">
-          <Interests />
-        </div>
-      </div>
-    </div>
-  );
-};
+const CV = () => (
+  <CVWrapper>
+    <Section id="basics">
+      <BasicInfo />
+    </Section>
+    <Section id="work">
+      <WorkExperience />
+    </Section>
+    <Section id="education">
+      <Education />
+    </Section>
+    <Section id="projects">
+      <Projects />
+    </Section>
+    <Section id="skills">
+      <Skills />
+    </Section>
+    <Section id="interests">
+      <Interests />
+    </Section>
+  </CVWrapper>
+);
 
 export default CV;

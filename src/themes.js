@@ -1,15 +1,15 @@
 export const lightTheme = {
-  bodyBg: '#ffffff',
-  bodyText: '#000000',
-  headerBg: '#f8f9fa',
-  headerText: '#000000',
+  backgroundColor: '#ffffff',
+  textColor: '#000000',
+  headerBgColor: '#f8f9fa',
+  headerTextColor: '#000000',
   accentColor: '#007bff',
 };
 
 export const darkTheme = {
-  bodyBg: '#343a40',
-  bodyText: '#ffffff',
-  headerBg: '#212529',
-  headerText: '#ffffff',
+  backgroundColor: '#121212',
+  textColor: '#ffffff',
+  headerBgColor: '#1c1c1e',
+  headerTextColor: '#ffffff',
   accentColor: '#007bff',
 };

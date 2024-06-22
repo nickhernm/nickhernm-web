@@ -1,26 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
 import { FaSun, FaMoon } from 'react-icons/fa';
+import styled from 'styled-components';
 
 const ToggleWrapper = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.accentColor};
-  font-size: 1.5rem;
-  position: absolute;
+  position: fixed;
   top: 1rem;
   right: 1rem;
-
-  &:focus {
-    outline: none;
-  }
+  z-index: 1000;
+  color: ${({ theme }) => theme.textColor};
 `;
 
-const ThemeToggle = ({ toggle, theme }) => (
-  <ToggleWrapper onClick={toggle}>
-    {theme === 'light' ? <FaMoon /> : <FaSun />}
-  </ToggleWrapper>
-);
+const ThemeToggle = ({ toggle, theme }) => {
+  return (
+    <ToggleWrapper onClick={toggle}>
+      {theme === 'light' ? <FaMoon size={24} /> : <FaSun size={24} />}
+    </ToggleWrapper>
+  );
+};
 
 export default ThemeToggle;

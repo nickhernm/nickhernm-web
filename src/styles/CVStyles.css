@@ -1,25 +1,56 @@
+/* CVStyles.css */
 .cv-container {
   display: flex;
 }
 
-.cv-content {
-  margin-left: 220px;
-  padding: 20px;
-  flex-grow: 1;
-}
-
 .sidebar {
-  top: 120px;
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
   position: fixed;
-  left: 20px;
+  top: 150px; /* Ajusta según sea necesario */
+  left: 0;
   width: 200px;
+  padding: 1rem;
+  height: calc(100% - 150px); /* Ajusta la altura según sea necesario */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar-item {
-  margin: 10px 0;
+.sidebar a {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--header-text-color);
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.sidebar-item.active {
+.sidebar a:hover,
+.sidebar a.active {
   color: var(--accent-color);
   font-weight: bold;
+}
+
+.cv-content {
+  margin-left: 220px;
+  padding: 2rem;
+  transition: margin-left 0.3s;
+}
+
+.cv-content section {
+  background-color: var(--header-bg-color);
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cv-content h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.cv-content p {
+  line-height: 1.6;
 }

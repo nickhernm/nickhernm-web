@@ -1,5 +1,3 @@
-// src/components/Blog.js
-
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -11,12 +9,10 @@ const BlogWrapper = styled.div`
 
 const PostBox = styled.div`
   border: 1px solid ${({ theme }) => theme.borderColor};
-  border-radius: 8px;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1rem auto;
 `;
 
 const PostTitle = styled.h2`
@@ -36,14 +32,14 @@ const Blog = () => (
   <BlogWrapper>
     <h1>Blog</h1>
     <PostBox>
-      <Link to="/blog/types-of-data-structures-trees">
+      <Link to="/blog/TypesOfDataStructuresTrees">
         <PostTitle>Types of Data Structures Trees</PostTitle>
       </Link>
       <PostDate>June 23, 2024 - 5 min read</PostDate>
       <PostSummary>An overview of various types of trees in data structures.</PostSummary>
     </PostBox>
     <PostBox>
-      <Link to="/blog/differential-equations">
+      <Link to="/blog/DifferentialEquations">
         <PostTitle>Differential Equations</PostTitle>
       </Link>
       <PostDate>June 22, 2024 - 7 min read</PostDate>

@@ -1,36 +1,36 @@
-// src/components/Sidebar.js
-
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const SidebarWrapper = styled.div`
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
   position: fixed;
-  top: 120px; /* Ajusta esto según la altura de tu encabezado */
-  left: 20px;
+  top: 100px; /* Ajusta este valor para que empiece desde donde desees */
+  padding: 1rem;
   width: 200px;
-  background-color: ${({ theme }) => theme.body};
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: calc(100% - 100px); /* Ajusta la altura según sea necesario */
 `;
 
-const SidebarItem = styled.div`
-  margin: 10px 0;
-  color: ${({ theme }) => theme.text};
-  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
-  cursor: pointer;
-  &:hover {
-    color: ${({ theme }) => theme.accentColor};
+const SidebarLink = styled(NavLink)`
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--header-text-color);
+  text-decoration: none;
+
+  &.active {
+    color: var(--accent-color);
   }
 `;
 
-const Sidebar = ({ sections, activeSection }) => (
+const Sidebar = () => (
   <SidebarWrapper>
-    {sections.map((section) => (
-      <SidebarItem key={section} active={activeSection === section}>
-        {section}
-      </SidebarItem>
-    ))}
+    <SidebarLink to="/cv#basics">Basics</SidebarLink>
+    <SidebarLink to="/cv#work">Work</SidebarLink>
+    <SidebarLink to="/cv#education">Education</SidebarLink>
+    <SidebarLink to="/cv#projects">Projects</SidebarLink>
+    <SidebarLink to="/cv#skills">Skills</SidebarLink>
+    <SidebarLink to="/cv#interests">Interests</SidebarLink>
   </SidebarWrapper>
 );
 
