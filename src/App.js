@@ -5,13 +5,15 @@ import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import About from './components/About';
-import Education from './components/Education';
-import Experience from './components/Experience';
+import Blog from './components/Blog';
+import Publications from './components/Publications';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Languages from './components/Languages';
+import Repositories from './components/Repositories';
+import CV from './components/CV';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import ThemeToggle from './components/ThemeToggle';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -23,20 +25,21 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <div className="App">
-        <ThemeToggle toggle={toggleTheme} />
+      <Router>
         <Header />
         <Navigation />
-        <main>
-          <About />
-          <Education />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Languages />
-          <Contact />
-        </main>
-      </div>
+        <ThemeToggle toggle={toggleTheme} />
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/repositories" element={<Repositories />} />
+          <Route path="/cv" element={<CV />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </Router>
     </ThemeProvider>
   );
 }

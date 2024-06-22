@@ -22,13 +22,13 @@ const Title = styled.p`
 
 const SocialLinks = styled.div`
   margin-top: 1rem;
-  
+
   a {
     color: ${({ theme }) => theme.headerText};
     font-size: 1.5rem;
     margin: 0 0.5rem;
     transition: color 0.3s ease;
-    
+
     &:hover {
       color: ${({ theme }) => theme.accentColor};
     }
