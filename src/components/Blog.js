@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom';
 
 const BlogWrapper = styled.div`
   padding: 2rem;
-  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: left;
 `;
 
 const PostBox = styled.div`
-  border: 1px solid ${({ theme }) => theme.borderColor};
-  padding: 1rem;
-  margin-bottom: 1rem;
-  max-width: 600px;
-  margin: 1rem auto;
+  margin-bottom: 2rem;
 `;
 
 const PostTitle = styled.h2`
@@ -31,6 +29,13 @@ const PostSummary = styled.p`
 const Blog = () => (
   <BlogWrapper>
     <h1>Blog</h1>
+    <PostBox>
+      <Link to="/blog/MCPADA">
+        <PostTitle>Minimum Cost Path Algorithm</PostTitle>
+      </Link>
+      <PostDate>June 10, 2024 - 30 min read</PostDate>
+      <PostSummary>Different ways to solve MCP using algorithms and their complexities.</PostSummary>
+    </PostBox>
     <PostBox>
       <Link to="/blog/TypesOfDataStructuresTrees">
         <PostTitle>Types of Data Structures Trees</PostTitle>

@@ -54,3 +54,28 @@
 .cv-content p {
   line-height: 1.6;
 }
+
+.sidebar {
+  position: sticky;
+  top: 20px;
+  height: auto;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.content-box {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

@@ -17,6 +17,7 @@ import ThemeToggle from './components/ThemeToggle';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import DifferentialEquations from './blog/DifferentialEquations';
 import TypesOfDataStructuresTrees from './blog/TypesOfDataStructuresTrees';
+import MCPADA from './blog/MCPADA';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -42,6 +43,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog/DifferentialEquations" element={<DifferentialEquations />} />
           <Route path="/blog/TypesOfDataStructuresTrees" element={<TypesOfDataStructuresTrees />} />
+          <Route path="/blog/MCPADA" element={<MCPADA />} />
         </Routes>
         <Footer />
       </Router>
