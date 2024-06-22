@@ -1,0 +1,25 @@
+.cv-container {
+  display: flex;
+}
+
+.cv-content {
+  margin-left: 220px;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.sidebar {
+  top: 120px;
+  position: fixed;
+  left: 20px;
+  width: 200px;
+}
+
+.sidebar-item {
+  margin: 10px 0;
+}
+
+.sidebar-item.active {
+  color: var(--accent-color);
+  font-weight: bold;
+}

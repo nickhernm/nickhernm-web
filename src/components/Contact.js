@@ -24,10 +24,10 @@ const Contact = () => (
   <ContactWrapper id="contact">
     <ContactTitle>Contact Me</ContactTitle>
     <ContactItem>
-      <ContactDetails>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></ContactDetails>
+      <ContactDetails>Email: <a href="mailto:ramajahde@gmail.com">ramajahde@gmail.com</a></ContactDetails>
     </ContactItem>
     <ContactItem>
-      <ContactDetails>Phone: <a href="tel:+1234567890">+1234567890</a></ContactDetails>
+      <ContactDetails>Phone: <a href="tel:+34633330554">+34633330554</a></ContactDetails>
     </ContactItem>
   </ContactWrapper>
 );

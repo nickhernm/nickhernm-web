@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const HeaderWrapper = styled.header`
   background: ${({ theme }) => theme.headerBg};
@@ -20,36 +19,11 @@ const Title = styled.p`
   margin: 0.5rem 0;
 `;
 
-const SocialLinks = styled.div`
-  margin-top: 1rem;
-
-  a {
-    color: ${({ theme }) => theme.headerText};
-    font-size: 1.5rem;
-    margin: 0 0.5rem;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: ${({ theme }) => theme.accentColor};
-    }
-  }
-`;
-
-function Header() {
-  return (
-    <HeaderWrapper>
-      <Name>Jaime Hernández</Name>
-      <Title>Computer Engineering Student</Title>
-      <SocialLinks>
-        <a href="https://github.com/nickhernm" target="_blank" rel="noopener noreferrer">
-          <FaGithub />
-        </a>
-        <a href="https://www.linkedin.com/in/nickhernm" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin />
-        </a>
-      </SocialLinks>
-    </HeaderWrapper>
-  );
-}
+const Header = () => (
+  <HeaderWrapper>
+    <Name>Jaime Hernández</Name>
+    <Title>Computer Engineering Student</Title>
+  </HeaderWrapper>
+);
 
 export default Header;

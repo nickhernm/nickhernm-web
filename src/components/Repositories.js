@@ -1,44 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const RepositoriesWrapper = styled.section`
-  padding: 4rem 2rem;
+const ReposWrapper = styled.section`
+  padding: 2rem;
 `;
 
-const RepoItem = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.border};
-  padding: 1rem 0;
+const RepoCard = styled.div`
+  background: ${({ theme }) => theme.cardBg};
+  color: ${({ theme }) => theme.cardText};
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-const RepoTitle = styled.h2`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.accentColor};
-`;
-
-const RepoDescription = styled.p`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.text};
-`;
-
-const Repositories = () => {
-  const [repos, setRepos] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.github.com/users/nickhernm/repos')
-      .then(response => response.json())
-      .then(data => setRepos(data));
-  }, []);
-
-  return (
-    <RepositoriesWrapper id="repositories">
-      {repos.map((repo, index) => (
-        <RepoItem key={index}>
-          <RepoTitle>{repo.name}</RepoTitle>
-          <RepoDescription>{repo.description}</RepoDescription>
-        </RepoItem>
-      ))}
-    </RepositoriesWrapper>
-  );
-};
+const Repositories = () => (
+  <ReposWrapper>
+    <h1>GitHub Repositories</h1>
+    <RepoCard>
+      <h2>Repository 1</h2>
+      <p>Description of repository 1...</p>
+    </RepoCard>
+    <RepoCard>
+      <h2>Repository 2</h2>
+      <p>Description of repository 2...</p>
+    </RepoCard>
+  </ReposWrapper>
+);
 
 export default Repositories;

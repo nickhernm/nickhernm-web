@@ -1,36 +1,34 @@
+// src/components/BlogPost.js
+
 import React from 'react';
 import styled from 'styled-components';
 
-const BlogPostWrapper = styled.section`
-  padding: 4rem 2rem;
+const PostWrapper = styled.div`
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: left;
 `;
 
-const PostTitle = styled.h1`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.accentColor};
-  margin-bottom: 1rem;
+const PostTitle = styled.h2`
+  color: ${({ theme }) => theme.primaryColor};
 `;
 
 const PostDate = styled.p`
+  color: ${({ theme }) => theme.secondaryColor};
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.text};
-  margin-bottom: 2rem;
 `;
 
 const PostContent = styled.div`
-  font-size: 1.1rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.text};
 `;
 
-const BlogPost = ({ title, date, content }) => {
-  return (
-    <BlogPostWrapper>
-      <PostTitle>{title}</PostTitle>
-      <PostDate>{date}</PostDate>
-      <PostContent>{content}</PostContent>
-    </BlogPostWrapper>
-  );
-};
+const BlogPost = ({ title, date, content }) => (
+  <PostWrapper>
+    <PostTitle>{title}</PostTitle>
+    <PostDate>{date}</PostDate>
+    <PostContent>{content}</PostContent>
+  </PostWrapper>
+);
 
 export default BlogPost;
