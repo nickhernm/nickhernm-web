@@ -1,66 +1,110 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section = styled.section`
+const ProjectsWrapper = styled.section`
   padding: 2rem;
-  border-bottom: 1px solid #ccc;
+  max-width: var(--max-width);
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
-const Title = styled.h2`
-  color: ${({ theme }) => theme.primaryColor};
+const ProjectGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const Project = styled.div`
-  margin: 1rem 0;
+const ProjectCard = styled.div`
+  background-color: ${({ theme }) => theme.backgroundAlt};
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
-const ProjectTitle = styled.h3`
-  margin: 0;
+const ProjectTitle = styled.h2`
   color: ${({ theme }) => theme.accentColor};
+  margin-bottom: 0.5rem;
 `;
 
-const Description = styled.p`
-  margin: 0.5rem 0;
+const ProjectDescription = styled.p`
+  color: ${({ theme }) => theme.textColor};
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
 `;
 
-const Technologies = styled.p`
+const ProjectTechnologies = styled.p`
+  color: ${({ theme }) => theme.secondaryColor};
+  font-size: 0.8rem;
   font-style: italic;
 `;
 
-const Projects = () => (
-  <Section>
-    <Title>Projects</Title>
-    <Project>
-      <ProjectTitle>Financial Reports Automation</ProjectTitle>
-      <Description>
-        Auge Asesores S.L.
-        <br />
-        - Development of an automated system for the generation of monthly financial reports.
-        <br />
-        - Implementation of Python scripts to extract data from various sources and consolidate them into detailed reports.
-        <br />
-        - Improved reporting process efficiency, reducing report generation time by 50%.
-      </Description>
-      <Technologies>
-        Technologies: Python · SQL · Excel
-      </Technologies>
-    </Project>
-    <Project>
-      <ProjectTitle>Document Management System</ProjectTitle>
-      <Description>
-        Auge Asesores S.L.
-        <br />
-        - Design and implementation of a database for the management and storage of legal and financial documents.
-        <br />
-        - Creation of a web interface for document access and administration, using PHP and JavaScript.
-        <br />
-        - Ensured document confidentiality and security by implementing access controls and encryption.
-      </Description>
-      <Technologies>
-        Technologies: PHP · JavaScript · MySQL
-      </Technologies>
-    </Project>
-  </Section>
-);
+const ProjectLink = styled.a`
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: ${({ theme }) => theme.accentColor};
+  color: ${({ theme }) => theme.textAlt};
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.accentColorHover};
+  }
+`;
+
+const Projects = () => {
+  const projectsList = [
+    {
+      title: "Financial Reports Automation",
+      description: "Developed an automated system for generating monthly financial reports, improving efficiency by 50%.",
+      technologies: "Python, SQL, Excel",
+      link: "https://github.com/yourusername/financial-reports-automation"
+    },
+    {
+      title: "Document Management System",
+      description: "Created a web-based document management system with secure access controls and encryption.",
+      technologies: "PHP, JavaScript, MySQL",
+      link: "https://github.com/yourusername/document-management-system"
+    },
+    {
+      title: "Machine Learning Stock Predictor",
+      description: "Implemented a machine learning model to predict stock prices based on historical data and news sentiment analysis.",
+      technologies: "Python, TensorFlow, Natural Language Processing",
+      link: "https://github.com/yourusername/ml-stock-predictor"
+    },
+    // Add more projects as needed
+  ];
+
+  return (
+    <ProjectsWrapper>
+      <h1>Projects</h1>
+      <ProjectGrid>
+        {projectsList.map((project, index) => (
+          <ProjectCard key={index}>
+            <ProjectTitle>{project.title}</ProjectTitle>
+            <ProjectDescription>{project.description}</ProjectDescription>
+            <ProjectTechnologies>{project.technologies}</ProjectTechnologies>
+            <ProjectLink href={project.link} target="_blank" rel="noopener noreferrer">
+              View Project
+            </ProjectLink>
+          </ProjectCard>
+        ))}
+      </ProjectGrid>
+    </ProjectsWrapper>
+  );
+};
 
 export default Projects;

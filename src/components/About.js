@@ -19,6 +19,7 @@ const Highlight = styled.span`
 
 const Paragraph = styled.p`
   margin-bottom: 1rem;
+  text-align: left;
 `;
 
 const About = () => (
@@ -26,30 +27,16 @@ const About = () => (
     <ProfileImage src="https://avatars.githubusercontent.com/u/116463106?s=400&u=06556e7acc48d3ad3ef1d60eb1174a259afd1dc5&v=4" alt="Jaime Hernández" />
     <h1>Jaime Hernández</h1>
     <Paragraph>
-      Hello! I am a <Highlight>Computer Engineering Student</Highlight> passionate about
-      <Highlight> technology</Highlight> and <Highlight>innovation</Highlight>. I enjoy working on
-      <Highlight>software development</Highlight> projects and learning new
-      <Highlight>programming languages</Highlight>. I am always eager to expand my knowledge and explore the latest advancements in the tech world.
+      I am a passionate <Highlight>Computer Engineering Student</Highlight> with a strong foundation in <Highlight>mathematics</Highlight> and a keen interest in <Highlight>cutting-edge technologies</Highlight>. My academic journey has equipped me with a robust understanding of <Highlight>software development</Highlight>, <Highlight>algorithms</Highlight>, and <Highlight>data structures</Highlight>. I am constantly seeking to expand my knowledge and skills in areas such as <Highlight>artificial intelligence</Highlight>, <Highlight>machine learning</Highlight>, and <Highlight>blockchain technology</Highlight>.
     </Paragraph>
     <Paragraph>
-      My goal is to make a positive impact in the field of <Highlight>technology</Highlight> through
-      <Highlight>innovative solutions</Highlight>. I believe in leveraging technology to solve real-world problems and improve people's lives.
+      My experience as an <Highlight>administrative assistant</Highlight> has honed my organizational and analytical skills, while my role as a <Highlight>sales associate</Highlight> has enhanced my ability to communicate effectively and work in fast-paced environments. These experiences, combined with my technical expertise, have prepared me to tackle complex challenges in the tech industry.
     </Paragraph>
     <Paragraph>
-      Apart from technology, I am deeply interested in <Highlight>research</Highlight> and <Highlight>investigation</Highlight> across various domains. I have a passion for reading, whether for
-      <Highlight>entertainment</Highlight> or to acquire new knowledge.
+      I am deeply committed to <Highlight>continuous learning</Highlight> and staying abreast of the latest developments in the field of computer science. My goal is to leverage my skills and knowledge to contribute to <Highlight>innovative projects</Highlight> that push the boundaries of technology and make a positive impact on society.
     </Paragraph>
     <Paragraph>
-      I also prioritize staying healthy by engaging in various <Highlight>sports</Highlight> and maintaining a
-      <Highlight>balanced lifestyle</Highlight>. Additionally, I love to travel and immerse myself in different
-      <Highlight>cultures</Highlight>, which helps me gain new perspectives and ideas.
-    </Paragraph>
-    <Paragraph>
-      I am enthusiastic about contributing to <Highlight>open-source projects</Highlight> and exploring
-      <Highlight>artificial intelligence</Highlight>. These areas offer exciting opportunities to collaborate with other developers and make meaningful contributions to the tech community.
-    </Paragraph>
-    <Paragraph>
-      In my free time, I enjoy experimenting with new technologies, building personal projects, and participating in hackathons. These activities not only enhance my skills but also allow me to connect with like-minded individuals.
+      Outside of my professional pursuits, I am an avid reader and enjoy exploring diverse topics ranging from <Highlight>scientific research</Highlight> to <Highlight>philosophy</Highlight>. I also maintain an active lifestyle through sports and believe in the importance of a <Highlight>healthy work-life balance</Highlight>. My passion for travel has broadened my perspective and enhanced my ability to adapt to diverse environments and collaborate with people from various cultural backgrounds.
     </Paragraph>
   </AboutWrapper>
 );
