@@ -38,40 +38,8 @@ const ImageWrapper = styled.div`
   margin: 2rem 0;
 `;
 
-const Sidebar = styled.div`
-  position: fixed;
-  left: 20px;
-  top: 100px;
-  width: 200px;
-  background: ${({ theme }) => theme.backgroundSecondary};
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const SidebarItem = styled.div`
-  margin: 0.5rem 0;
-  a {
-    color: ${({ theme }) => theme.primaryColor};
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 const TreeTypes = () => (
   <div>
-    <Sidebar>
-      <h3>Contents</h3>
-      <SidebarItem><a href="#intro">Introduction</a></SidebarItem>
-      <SidebarItem><a href="#binary">Binary Trees</a></SidebarItem>
-      <SidebarItem><a href="#bst">Binary Search Trees</a></SidebarItem>
-      <SidebarItem><a href="#avl">AVL Trees</a></SidebarItem>
-      <SidebarItem><a href="#rbt">Red-Black Trees</a></SidebarItem>
-      <SidebarItem><a href="#btree">B-Trees</a></SidebarItem>
-      <SidebarItem><a href="#heaps">Heaps</a></SidebarItem>
-    </Sidebar>
     <PostWrapper>
       <PostTitle>Types of Data Structures Trees</PostTitle>
       <PostDate>June 23, 2024</PostDate>

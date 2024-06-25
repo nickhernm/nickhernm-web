@@ -18,6 +18,9 @@ import Register from './components/auth/Register';
 import Footer from './components/Footer';
 import ThemeToggle from './components/ThemeToggle';
 import ScrollToTop from './components/ScrollToTop';
+import MCPADA from './blogPost/MCPADA';
+import TypesOfDataStructuresTrees from './blogPost/TypesOfDataStructuresTrees';
+import DifferentialEquations from './blogPost/DifferentialEquations';
 
 function App() {
   const [theme, setTheme] = React.useState('light');
@@ -45,6 +48,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/blogPost/MCPADA" element={<MCPADA />} />
+        <Route path="/blogPost/TypesOfDataStructuresTrees" element={<TypesOfDataStructuresTrees />} />
+        <Route path="/blogPost/DifferentialEquations" element={<DifferentialEquations />} />
           </Routes>
           <Footer />
         </Router>

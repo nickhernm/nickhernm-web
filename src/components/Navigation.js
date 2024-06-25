@@ -73,6 +73,24 @@ const MobileNavLink = styled(NavLinkStyled)`
   font-size: 1.5rem;
 `;
 
+const AuthButtons = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const AuthButton = styled(NavLink)`
+  padding: 0.5rem 1rem;
+  background-color: ${({ theme }) => theme.accentColor};
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.accentColorHover};
+  }
+`;
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

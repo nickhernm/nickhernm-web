@@ -38,37 +38,9 @@ const ImageWrapper = styled.div`
   margin: 2rem 0;
 `;
 
-const Sidebar = styled.div`
-  position: fixed;
-  left: 20px;
-  top: 100px;
-  width: 200px;
-  background: ${({ theme }) => theme.backgroundSecondary};
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const SidebarItem = styled.div`
-  margin: 0.5rem 0;
-  a {
-    color: ${({ theme }) => theme.primaryColor};
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
 
 const DifferentialEquations = () => (
   <div>
-    <Sidebar>
-      <h3>Contents</h3>
-      <SidebarItem><a href="#intro">Introduction</a></SidebarItem>
-      <SidebarItem><a href="#ode">Ordinary Differential Equations</a></SidebarItem>
-      <SidebarItem><a href="#pde">Partial Differential Equations</a></SidebarItem>
-      <SidebarItem><a href="#methods">Solving Methods</a></SidebarItem>
-    </Sidebar>
     <PostWrapper>
       <PostTitle>Differential Equations</PostTitle>
       <PostDate>June 22, 2024</PostDate>
