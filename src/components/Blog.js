@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaThumbtack } from 'react-icons/fa';
 
 const BlogWrapper = styled.div`
   padding: 2rem;
-  margin: 2rem auto;
   max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const BlogHeader = styled.div`
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
+const BlogTitle = styled.h1`
+  font-size: 2.5rem;
+  color: ${({ theme }) => theme.accentColor};
 `;
 
 const SearchBar = styled.input`
   width: 100%;
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   font-size: 1rem;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 4px;
 `;
 
 const FilterContainer = styled.div`
@@ -49,10 +62,19 @@ const PostBox = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  position: relative;
 
   &:hover {
     transform: translateY(-5px);
   }
+`;
+
+const PinnedIcon = styled(FaThumbtack)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: ${({ theme }) => theme.accentColor};
+  font-size: 1.2rem;
 `;
 
 const PostImage = styled.img`
@@ -103,7 +125,8 @@ const blogPosts = [
     summary: "Different ways to solve MCP using algorithms and their complexities.",
     image: "https://example.com/mcp-image.jpg",
     tags: ["Algorithms", "Dynamic Programming", "Computer Science"],
-    link: "/blog/MCPADA"
+    link: "/blog/MCPADA",
+    pinned: true
   },
   {
     id: 2,
@@ -112,7 +135,8 @@ const blogPosts = [
     summary: "An overview of various types of trees in data structures.",
     image: "https://example.com/trees-image.jpg",
     tags: ["Data Structures", "Trees", "Computer Science"],
-    link: "/blog/TypesOfDataStructuresTrees"
+    link: "/blog/TypesOfDataStructuresTrees",
+    pinned: false
   },
   {
     id: 3,
@@ -121,7 +145,8 @@ const blogPosts = [
     summary: "An introduction to differential equations and their applications.",
     image: "https://example.com/differential-equations-image.jpg",
     tags: ["Mathematics", "Differential Equations", "Physics"],
-    link: "/blog/DifferentialEquations"
+    link: "/blog/DifferentialEquations",
+    pinned: false
   },
   // Add more blog posts here
 ];
@@ -145,31 +170,40 @@ const Blog = () => {
     return matchesSearch && matchesFilters;
   });
 
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+    return 0;
+  });
+
   const allTags = [...new Set(blogPosts.flatMap(post => post.tags))];
 
   return (
     <BlogWrapper>
-      <h1>Blog</h1>
-      <SearchBar 
-        type="text" 
-        placeholder="Search blog posts..." 
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <FilterContainer>
-        {allTags.map(tag => (
-          <FilterButton 
-            key={tag} 
-            active={activeFilters.includes(tag)}
-            onClick={() => handleFilterClick(tag)}
-          >
-            {tag}
-          </FilterButton>
-        ))}
-      </FilterContainer>
+      <BlogHeader>
+        <BlogTitle>Blog</BlogTitle>
+        <SearchBar 
+          type="text" 
+          placeholder="Search blog posts..." 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <FilterContainer>
+          {allTags.map(tag => (
+            <FilterButton 
+              key={tag} 
+              active={activeFilters.includes(tag)}
+              onClick={() => handleFilterClick(tag)}
+            >
+              {tag}
+            </FilterButton>
+          ))}
+        </FilterContainer>
+      </BlogHeader>
       <PostGrid>
-        {filteredPosts.map(post => (
+        {sortedPosts.map(post => (
           <PostBox key={post.id}>
+            {post.pinned && <PinnedIcon />}
             <Link to={post.link}>
               <PostImage src={post.image} alt={post.title} />
               <PostContent>

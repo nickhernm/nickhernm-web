@@ -1,78 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section = styled.section`
-  padding: 2rem;
-  border-bottom: 1px solid #ccc;
+const ExperienceWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 
-const Title = styled.h2`
-  color: ${({ theme }) => theme.primaryColor};
-`;
-
-const Job = styled.div`
-  margin: 1rem 0;
+const ExperienceItem = styled.div`
+  border-left: 2px solid ${({ theme }) => theme.accentColor};
+  padding-left: 1rem;
 `;
 
 const JobTitle = styled.h3`
-  margin: 0;
-  color: ${({ theme }) => theme.accentColor};
+  color: ${({ theme }) => theme.primaryColor};
+  margin-bottom: 0.5rem;
 `;
 
-const Dates = styled.p`
-  margin: 0;
+const Company = styled.h4`
   color: ${({ theme }) => theme.secondaryColor};
-  font-size: 0.9rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
 `;
 
-const Description = styled.p`
-  margin: 0.5rem 0;
-`;
-
-const Technologies = styled.p`
+const DateRange = styled.p`
   font-style: italic;
+  margin-bottom: 0.5rem;
+`;
+
+const Description = styled.ul`
+  padding-left: 1.5rem;
 `;
 
 const WorkExperience = () => (
-  <Section>
-    <Title>Work Experience</Title>
-    <Job>
+  <ExperienceWrapper>
+    <ExperienceItem>
       <JobTitle>Administrative Assistant</JobTitle>
-      <Dates>September 2021 - October 2023</Dates>
+      <Company>Auge Asesores S.L., Alicante, Spain</Company>
+      <DateRange>September 2021 - October 2023</DateRange>
       <Description>
-        Auge Asesores S.L., Alicante, Spain
-        <br />
-        - Telephone and customer service.
-        <br />
-        - Financial administration.
-        <br />
-        - Verification of financial analysis and results.
-        <br />
-        - Documentation management.
+        <li>Telephone and customer service.</li>
+        <li>Financial administration.</li>
+        <li>Verification of financial analysis and results.</li>
+        <li>Documentation management.</li>
       </Description>
-      <Technologies>
-        Technologies: Excel · Word · CRM · Systems
-      </Technologies>
-    </Job>
-    <Job>
+    </ExperienceItem>
+    <ExperienceItem>
       <JobTitle>Sales Associate</JobTitle>
-      <Dates>November 2022 - September 2023</Dates>
+      <Company>Zara, Inditex, Alicante, Spain</Company>
+      <DateRange>November 2022 - September 2023</DateRange>
       <Description>
-        Zara, Inditex, Alicante, Spain
-        <br />
-        - Product replenishment in the store.
-        <br />
-        - Cash register tasks and customer service.
-        <br />
-        - Organization, storage, and management of supplier orders.
-        <br />
-        - Window display preparation.
+        <li>Product replenishment in the store.</li>
+        <li>Cash register tasks and customer service.</li>
+        <li>Organization, storage, and management of supplier orders.</li>
+        <li>Window display preparation.</li>
       </Description>
-      <Technologies>
-        Technologies: Excel · Point of Sale Systems
-      </Technologies>
-    </Job>
-  </Section>
+    </ExperienceItem>
+  </ExperienceWrapper>
 );
 
 export default WorkExperience;

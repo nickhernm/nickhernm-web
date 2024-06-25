@@ -25,6 +25,8 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
   }
 
   body {
@@ -37,68 +39,72 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-    }
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
   }
 
   h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
+    font-size: 2rem;
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1.25rem;
-    }
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
   }
 
   p {
     margin-bottom: 1rem;
-    line-height: 1.5;
   }
 
-  .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 1rem;
-
-    @media (max-width: 1200px) {
-      max-width: 100%;
-    }
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .responsive-image {
+  img {
     max-width: 100%;
     height: auto;
   }
 
-  @media (max-width: 768px) {
-    .hide-mobile {
-      display: none;
-    }
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
   }
 
-  @media (min-width: 769px) {
-    .hide-desktop {
-      display: none;
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 `;

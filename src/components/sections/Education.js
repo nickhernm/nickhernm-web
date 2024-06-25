@@ -1,55 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Section = styled.section`
-  padding: 2rem;
-  border-bottom: 1px solid #ccc;
+const EducationWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 
-const Title = styled.h2`
+const EducationItem = styled.div`
+  border-left: 2px solid ${({ theme }) => theme.accentColor};
+  padding-left: 1rem;
+`;
+
+const Degree = styled.h3`
   color: ${({ theme }) => theme.primaryColor};
+  margin-bottom: 0.5rem;
 `;
 
-const Degree = styled.div`
-  margin: 1rem 0;
-`;
-
-const DegreeTitle = styled.h3`
-  margin: 0;
-  color: ${({ theme }) => theme.accentColor};
-`;
-
-const Institution = styled.p`
-  margin: 0;
+const Institution = styled.h4`
   color: ${({ theme }) => theme.secondaryColor};
+  font-weight: normal;
+  margin-bottom: 0.5rem;
 `;
 
-const Dates = styled.p`
-  margin: 0;
-  color: ${({ theme }) => theme.secondaryColor};
-  font-size: 0.9rem;
-`;
-
-const Description = styled.p`
-  margin: 0.5rem 0;
+const DateRange = styled.p`
+  font-style: italic;
 `;
 
 const Education = () => (
-  <Section>
-    <Title>Education</Title>
-    <Degree>
-      <DegreeTitle>Degree in Computer Engineering</DegreeTitle>
+  <EducationWrapper>
+    <EducationItem>
+      <Degree>Degree in Computer Engineering</Degree>
       <Institution>University of Alicante, Alicante, Spain</Institution>
-    </Degree>
-    <Degree>
-      <DegreeTitle>Degree in Mathematics</DegreeTitle>
+      <DateRange>2020 - Present</DateRange>
+    </EducationItem>
+    <EducationItem>
+      <Degree>Degree in Mathematics</Degree>
       <Institution>UNED, Spain</Institution>
-    </Degree>
-    <Degree>
-      <DegreeTitle>Scientific Baccalaureate</DegreeTitle>
+      <DateRange>2021 - Present</DateRange>
+    </EducationItem>
+    <EducationItem>
+      <Degree>Scientific Baccalaureate</Degree>
       <Institution>Inmaculada Jesuitas Alicante Concerted School, Alicante, Spain</Institution>
-    </Degree>
-  </Section>
+      <DateRange>2018 - 2020</DateRange>
+    </EducationItem>
+  </EducationWrapper>
 );
 
 export default Education;
