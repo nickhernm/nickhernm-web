@@ -88,17 +88,6 @@ const Header = () => {
         <Subtitle>Computer Engineering and Mathematics</Subtitle>
       </TitleSection>
       <RightSection>
-        {user ? (
-          <>
-            <UserInfo>Welcome, {user.username}</UserInfo>
-            <LogoutButton onClick={logout}>Logout</LogoutButton>
-          </>
-        ) : (
-          <AuthButtons>
-            <AuthButton to="/login">Login</AuthButton>
-            <AuthButton to="/register">Register</AuthButton>
-          </AuthButtons>
-        )}
         <ThemeToggle />
       </RightSection>
     </HeaderWrapper>

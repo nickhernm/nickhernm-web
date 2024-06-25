@@ -1,29 +1,45 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import api from '../utils/api';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const CommentWrapper = styled.div`
-  margin-top: 2rem;
+const CommentsWrapper = styled.section`
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid ${({ theme }) => theme.borderColor};
 `;
 
 const CommentForm = styled.form`
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 2rem;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.5rem;
   margin-bottom: 1rem;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 4px;
 `;
 
-const CommentInput = styled.textarea`
-  margin-bottom: 0.5rem;
+const Textarea = styled.textarea`
+  width: 100%;
   padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 4px;
+  min-height: 100px;
 `;
 
-const CommentButton = styled.button`
-  padding: 0.5rem;
+const SubmitButton = styled.button`
   background-color: ${({ theme }) => theme.accentColor};
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.accentColorHover};
+  }
 `;
 
 const CommentList = styled.ul`
@@ -32,64 +48,75 @@ const CommentList = styled.ul`
 `;
 
 const CommentItem = styled.li`
-  margin-bottom: 1rem;
-  padding: 1rem;
   background-color: ${({ theme }) => theme.backgroundAlt};
-  border-radius: 4px;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const CommentAuthor = styled.p`
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+`;
+
+const CommentContent = styled.p`
+  margin-bottom: 0;
 `;
 
 const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
-  const { user } = useContext(AuthContext);
+  const [newComment, setNewComment] = useState({ author: '', content: '' });
 
   useEffect(() => {
-    fetchComments();
+    // Fetch comments for the post
+    // This is where you'd typically make an API call
+    // For now, we'll use mock data
+    setComments([
+      { id: 1, author: 'John Doe', content: 'Great article!' },
+      { id: 2, author: 'Jane Smith', content: 'Very informative, thanks for sharing.' },
+    ]);
   }, [postId]);
 
-  const fetchComments = async () => {
-    try {
-      const res = await api.get(`/comments/${postId}`);
-      setComments(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await api.post('/comments', { post: postId, content: newComment });
-      setNewComment('');
-      fetchComments();
-    } catch (err) {
-      console.error(err);
-    }
+    // Here you would typically send the new comment to your API
+    // For now, we'll just add it to the local state
+    const comment = {
+      id: comments.length + 1,
+      ...newComment,
+    };
+    setComments([...comments, comment]);
+    setNewComment({ author: '', content: '' });
   };
 
   return (
-    <CommentWrapper>
+    <CommentsWrapper>
       <h3>Comments</h3>
-      {user && (
-        <CommentForm onSubmit={handleSubmit}>
-          <CommentInput
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Write a comment..."
-            required
-          />
-          <CommentButton type="submit">Post Comment</CommentButton>
-        </CommentForm>
-      )}
+      <CommentForm onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          placeholder="Your name"
+          value={newComment.author}
+          onChange={(e) => setNewComment({ ...newComment, author: e.target.value })}
+          required
+        />
+        <Textarea
+          placeholder="Your comment"
+          value={newComment.content}
+          onChange={(e) => setNewComment({ ...newComment, content: e.target.value })}
+          required
+        />
+        <SubmitButton type="submit">Post Comment</SubmitButton>
+      </CommentForm>
       <CommentList>
         {comments.map((comment) => (
-          <CommentItem key={comment._id}>
-            <strong>{comment.user.username}</strong>
-            <p>{comment.content}</p>
+          <CommentItem key={comment.id}>
+            <CommentAuthor>{comment.author}</CommentAuthor>
+            <CommentContent>{comment.content}</CommentContent>
           </CommentItem>
         ))}
       </CommentList>
-    </CommentWrapper>
+    </CommentsWrapper>
   );
 };
 

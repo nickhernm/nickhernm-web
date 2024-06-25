@@ -181,6 +181,13 @@ const PageButton = styled.button`
   }
 `;
 
+const NoResultsMessage = styled.p`
+  text-align: center;
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.secondaryColor};
+  margin-top: 2rem;
+`;
+
 const blogPosts = [
   {
     id: 1,
@@ -289,47 +296,53 @@ const Blog = () => {
         </FilterContainer>
       </BlogHeader>
       <PostGrid>
-        {currentPosts.map(post => (
-          <PostBox key={post.id} pinned={post.pinned}>
-            {post.pinned && <PinnedIcon />}
-            <Link to={post.link}>
-              <PostImage src={post.image} alt={post.title} pinned={post.pinned} />
-              <PostContent>
-                <PostTitle>{post.title}</PostTitle>
-                <PostMeta>
-                  <PostDate>{new Date(post.date).toLocaleDateString()}</PostDate>
-                  <ReadTime>{calculateReadTime(post.summary)} min read</ReadTime>
-                </PostMeta>
-                <PostSummary>{post.summary}</PostSummary>
-                <PostTags>
-                  {post.tags.map(tag => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </PostTags>
-              </PostContent>
-            </Link>
-          </PostBox>
-        ))}
+        {currentPosts.length > 0 ? (
+          currentPosts.map(post => (
+            <PostBox key={post.id} pinned={post.pinned}>
+              {post.pinned && <PinnedIcon />}
+              <Link to={post.link}>
+                <PostImage src={post.image} alt={post.title} pinned={post.pinned} />
+                <PostContent>
+                  <PostTitle>{post.title}</PostTitle>
+                  <PostMeta>
+                    <PostDate>{new Date(post.date).toLocaleDateString()}</PostDate>
+                    <ReadTime>{calculateReadTime(post.summary)} min read</ReadTime>
+                  </PostMeta>
+                  <PostSummary>{post.summary}</PostSummary>
+                  <PostTags>
+                    {post.tags.map(tag => (
+                      <Tag key={tag}>{tag}</Tag>
+                    ))}
+                  </PostTags>
+                </PostContent>
+              </Link>
+            </PostBox>
+          ))
+        ) : (
+          <NoResultsMessage>No posts found matching your search criteria.</NoResultsMessage>
+        )}
       </PostGrid>
-      <Pagination>
-        <PageButton onClick={() => paginate(1)} disabled={currentPage === 1}>
-          First
-        </PageButton>
-        <PageButton onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
-          Prev
-        </PageButton>
-        {pageNumbers.map(number => (
-          <PageButton key={number} active={currentPage === number} onClick={() => paginate(number)}>
-            {number}
+      {filteredPosts.length > POSTS_PER_PAGE && (
+        <Pagination>
+          <PageButton onClick={() => paginate(1)} disabled={currentPage === 1}>
+            First
           </PageButton>
-        ))}
-        <PageButton onClick={() => paginate(currentPage + 1)} disabled={currentPage === pageCount}>
-          Next
-        </PageButton>
-        <PageButton onClick={() => paginate(pageCount)} disabled={currentPage === pageCount}>
-          Last
-        </PageButton>
-      </Pagination>
+          <PageButton onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+            Prev
+          </PageButton>
+          {pageNumbers.map(number => (
+            <PageButton key={number} active={currentPage === number} onClick={() => paginate(number)}>
+              {number}
+            </PageButton>
+          ))}
+          <PageButton onClick={() => paginate(currentPage + 1)} disabled={currentPage === pageCount}>
+            Next
+          </PageButton>
+          <PageButton onClick={() => paginate(pageCount)} disabled={currentPage === pageCount}>
+            Last
+          </PageButton>
+        </Pagination>
+      )}
     </BlogWrapper>
   );
 };

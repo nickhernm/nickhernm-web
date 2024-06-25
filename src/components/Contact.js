@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaEnvelope, FaPhone, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaEnvelope, FaPhone, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const ContactWrapper = styled.section`
   padding: 4rem 2rem;
@@ -77,6 +77,14 @@ const Contact = () => (
         </ContactIcon>
         <ContactText>
           <ContactLink href="https://twitter.com/nickhernm" target="_blank" rel="noopener noreferrer">@nickhernm</ContactLink>
+        </ContactText>
+      </ContactItem>
+      <ContactItem>
+        <ContactIcon>
+          <FaInstagram />
+        </ContactIcon>
+        <ContactText>
+          <ContactLink href="https://instagram.com/nickhernm" target="_blank" rel="noopener noreferrer">@nickhernm</ContactLink>
         </ContactText>
       </ContactItem>
       <ContactItem>

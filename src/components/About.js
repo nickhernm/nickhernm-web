@@ -24,7 +24,7 @@ const Paragraph = styled.p`
 
 const About = () => (
   <AboutWrapper>
-    <ProfileImage src="https://avatars.githubusercontent.com/u/116463106?s=400&u=06556e7acc48d3ad3ef1d60eb1174a259afd1dc5&v=4" alt="Jaime Hernández" />
+    <ProfileImage src="https://avatars.githubusercontent.com/u/116463106?s=400&u=078d2dd4ccc6bd0c2f6801f742f8721ce198ad92&v=4" alt="Jaime Hernández" />
     <h1>Jaime Hernández</h1>
     <Paragraph>
       I am a passionate <Highlight>Computer Engineering Student</Highlight> with a strong foundation in <Highlight>mathematics</Highlight> and a keen interest in <Highlight>cutting-edge technologies</Highlight>. My academic journey has equipped me with a robust understanding of <Highlight>software development</Highlight>, <Highlight>algorithms</Highlight>, and <Highlight>data structures</Highlight>. I am constantly seeking to expand my knowledge and skills in areas such as <Highlight>artificial intelligence</Highlight>, <Highlight>machine learning</Highlight>, and <Highlight>blockchain technology</Highlight>.

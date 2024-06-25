@@ -2,6 +2,29 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaArrowUp } from 'react-icons/fa';
 
+const ScrollButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: ${({ theme }) => theme.accentColor};
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
+  transition: opacity 0.3s, background-color 0.3s;
+  
+  &:hover {
+    background-color: ${({ theme }) => theme.accentColorHover};
+  }
+`;
+
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -29,34 +52,12 @@ const ScrollToTop = () => {
   return (
     <>
       {isVisible && (
-        <ScrollButton onClick={scrollToTop} aria-label="Scroll to top">
+        <ScrollButton onClick={scrollToTop} visible={isVisible}>
           <FaArrowUp />
         </ScrollButton>
       )}
     </>
   );
 };
-
-const ScrollButton = styled.button`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: ${({ theme }) => theme.accentColor};
-  color: ${({ theme }) => theme.textAlt};
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 25px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.accentColorHover};
-  }
-`;
 
 export default ScrollToTop;
