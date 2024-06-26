@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Latex from 'react-latex-next';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import RelatedPosts from '../components/RelatedPosts';
+import Comments from '../components/Comments';
 
 const PostWrapper = styled.div`
   padding: 2rem;
@@ -39,7 +43,7 @@ const ImageWrapper = styled.div`
 `;
 
 
-const DifferentialEquations = () => (
+const DifferentialEquations = ({ relatedPosts, postId }) => (
   <div>
     <PostWrapper>
       <PostTitle>Differential Equations</PostTitle>
@@ -90,6 +94,7 @@ const DifferentialEquations = () => (
         </ul>
         <p>Separation of variables involves rewriting the equation so that each variable and its differential are on opposite sides of the equation, then integrating both sides. Integrating factors are used to solve linear first-order ODEs by multiplying through by a function that simplifies the equation. Numerical methods, such as the finite difference method or finite element method, approximate solutions by discretizing the variables and solving a system of algebraic equations.</p>
       </PostContent>
+      {<Comments postId={postId} />}
     </PostWrapper>
   </div>
 );

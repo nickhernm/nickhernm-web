@@ -21,6 +21,7 @@ import ScrollToTop from './components/ScrollToTop';
 import MCPADA from './blogPost/MCPADA';
 import TypesOfDataStructuresTrees from './blogPost/TypesOfDataStructuresTrees';
 import DifferentialEquations from './blogPost/DifferentialEquations';
+import BigONotation from './blogPost/BigONotation';
 
 function App() {
   const [theme, setTheme] = React.useState('light');
@@ -49,8 +50,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/blogPost/MCPADA" element={<MCPADA />} />
-        <Route path="/blogPost/TypesOfDataStructuresTrees" element={<TypesOfDataStructuresTrees />} />
-        <Route path="/blogPost/DifferentialEquations" element={<DifferentialEquations />} />
+            <Route path="/blogPost/TypesOfDataStructuresTrees" element={<TypesOfDataStructuresTrees />} />
+            <Route path="/blogPost/DifferentialEquations" element={<DifferentialEquations />} />
+            <Route path="/blogPost/BigONotation" element={<BigONotation />} />
           </Routes>
           <Footer />
         </Router>

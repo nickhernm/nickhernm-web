@@ -396,7 +396,7 @@ if (heuristic >= bestCost) {
           While the algorithm performs excellently on the test maps, there's still room for improvement, particularly for very large maps. Future work could focus on <HighlightedText>parallelizing the algorithm</HighlightedText> to leverage multi-core processors, potentially leading to even faster execution times for large-scale problems.
         </Paragraph>
       </Section>
-      {/*<Comments postId={postId} />}
+      {<Comments postId={postId} />}
      {/* <RelatedPosts posts={relatedPosts} /> */}
     </PostWrapper>
   );

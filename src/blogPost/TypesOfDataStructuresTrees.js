@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Latex from 'react-latex-next';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import RelatedPosts from '../components/RelatedPosts';
+import Comments from '../components/Comments';
 
 const PostWrapper = styled.div`
   padding: 2rem;
@@ -38,7 +42,7 @@ const ImageWrapper = styled.div`
   margin: 2rem 0;
 `;
 
-const TreeTypes = () => (
+const TreeTypes = ({ relatedPosts, postId }) => (
   <div>
     <PostWrapper>
       <PostTitle>Types of Data Structures Trees</PostTitle>
@@ -87,6 +91,7 @@ const TreeTypes = () => (
         
         <p>Understanding these tree structures and their properties is essential for solving complex computational problems efficiently.</p>
       </PostContent>
+      {<Comments postId={postId} />}
     </PostWrapper>
   </div>
 );

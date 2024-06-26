@@ -219,6 +219,16 @@ const blogPosts = [
     link: "/blogPost/DifferentialEquations",
     pinned: false
   },
+  {
+    id: 4,
+    title: "Understanding Big O Notation and Algorithm Complexity",
+    date: "2024-08-22",
+    summary: "A comprehensive guide to Big O notation, algorithm complexity analysis, and its importance in computer science.",
+    image: "",
+    tags: ["Computer Science", "Algorithms", "Complexity Analysis"],
+    link: "/blogPost/BigONotation",
+    pinned: true
+},
 ];
 
 const POSTS_PER_PAGE = 5;

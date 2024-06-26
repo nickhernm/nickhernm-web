@@ -1,33 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const Comment = require('../models/Comment');
-const auth = require('../middleware/auth');
 
-// Get comments for a post
-router.get('/:post', async (req, res) => {
+// Get all comments for a post
+router.get('/:postId', async (req, res) => {
   try {
-    const comments = await Comment.find({ post: req.params.post }).populate('user', 'username');
+    const comments = await Comment.find({ postId: req.params.postId }).sort({ createdAt: -1 });
     res.json(comments);
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: err.message });
   }
 });
 
-// Add a comment
-router.post('/', auth, async (req, res) => {
-  try {
-    const newComment = new Comment({
-      user: req.user.id,
-      post: req.body.post,
-      content: req.body.content
-    });
+// Create a new comment
+router.post('/', async (req, res) => {
+  const comment = new Comment({
+    postId: req.body.postId,
+    author: req.body.author,
+    content: req.body.content
+  });
 
-    const comment = await newComment.save();
-    res.json(comment);
+  try {
+    const newComment = await comment.save();
+    res.status(201).json(newComment);
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(400).json({ message: err.message });
   }
 });
 
