@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 
 const FooterWrapper = styled.footer`
   padding: 2rem;
@@ -60,6 +61,9 @@ const Footer = () => (
       </SocialLink>
       <SocialLink href="https://twitter.com/nickhernm" target="_blank" rel="noopener noreferrer">
         <FaTwitter />
+      </SocialLink>
+      <SocialLink href="https://www.instagram.com/nickhernm" target="_blank" rel="noopener noreferrer">
+        <FaInstagram />
       </SocialLink>
     </SocialIcons>
     <ContactInfo>

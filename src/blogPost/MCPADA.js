@@ -4,7 +4,7 @@ import Latex from 'react-latex-next';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { FaDownload } from 'react-icons/fa';
 import RelatedPosts from '../components/RelatedPosts';
-
+import Comments from '../components/Comments';
 
 const PostWrapper = styled.div`
   max-width: 800px;
@@ -90,7 +90,7 @@ const HighlightedText = styled.span`
   border-radius: 4px;
 `;
 
-const MCPADA = ({ relatedPosts }) => {
+const MCPADA = ({ relatedPosts, postId }) => {
   return (
     <PostWrapper>
       <PostTitle>Minimum Cost Path Algorithm: A Branch and Bound Approach</PostTitle>
@@ -396,6 +396,7 @@ if (heuristic >= bestCost) {
           While the algorithm performs excellently on the test maps, there's still room for improvement, particularly for very large maps. Future work could focus on <HighlightedText>parallelizing the algorithm</HighlightedText> to leverage multi-core processors, potentially leading to even faster execution times for large-scale problems.
         </Paragraph>
       </Section>
+      {/*<Comments postId={postId} />}
      {/* <RelatedPosts posts={relatedPosts} /> */}
     </PostWrapper>
   );

@@ -65,7 +65,8 @@ const MobileMenu = styled.div`
 const CloseButton = styled(MenuButton)`
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 const MobileNavLink = styled(NavLinkStyled)`

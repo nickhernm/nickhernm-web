@@ -194,7 +194,7 @@ const blogPosts = [
     title: "Minimum Cost Path Algorithm",
     date: "2024-06-10",
     summary: "Different ways to solve MCP using algorithms and their complexities.",
-    image: "http://stackoverflow.com/questions/13249057/dijkstra-find-shortest-path-in-directed-graph",
+    image: "https://subscription.packtpub.com/book/application_development/9781786465153/8/ch08lvl1sec57/minimum-cost-spanning-tree",
     tags: ["Algorithms", "Dynamic Programming", "Computer Science"],
     link: "/blogPost/MCPADA",
     pinned: true
@@ -204,7 +204,7 @@ const blogPosts = [
     title: "Types of Data Structures Trees",
     date: "2024-06-23",
     summary: "An overview of various types of trees in data structures.",
-    image: "https://yottagin.com/?p=3423",
+    image: "https://www.sampleassignment.com/blog/advanced-data-structures",
     tags: ["Data Structures", "Trees", "Computer Science"],
     link: "/blogPost/TypesOfDataStructuresTrees",
     pinned: false
@@ -214,7 +214,7 @@ const blogPosts = [
     title: "Differential Equations",
     date: "2024-06-22",
     summary: "An introduction to differential equations and their applications.",
-    image: "https://www.pplusplus.lima-city.de/femfluid.html",
+    image: "https://www.qwant.com/?client=brz-moz&q=differential+equations&t=images&license=public&o=0%3A5144475AD76ED86223981E9BE56F66BCA7DC35C6",
     tags: ["Mathematics", "Differential Equations", "Physics"],
     link: "/blogPost/DifferentialEquations",
     pinned: false
