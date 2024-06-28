@@ -1,5 +1,3 @@
-// src/components/BlogPost.js
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -23,7 +21,7 @@ const PostContent = styled.div`
   line-height: 1.6;
 `;
 
-const BlogPost = ({ title, date, content }) => (
+const BlogPost = ({id, title, date, content }) => (
   <PostWrapper>
     <PostTitle>{title}</PostTitle>
     <PostDate>{date}</PostDate>

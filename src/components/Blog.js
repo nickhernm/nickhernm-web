@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaThumbtack, FaSearch } from 'react-icons/fa';
+import { FaThumbtack, FaSearch, FaClock } from 'react-icons/fa';
 
 const BlogWrapper = styled.div`
   padding: 2rem;
@@ -48,6 +48,7 @@ const FilterContainer = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  justify-content: center;
 `;
 
 const FilterButton = styled.button`
@@ -67,72 +68,80 @@ const FilterButton = styled.button`
 
 const PostGrid = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
 `;
 
 const PostBox = styled.div`
   background-color: ${({ theme }) => theme.backgroundAlt};
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  position: relative;
-  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: ${props => props.pinned ? '100%' : 'calc(50% - 1rem)'};
+  display: flex;
+  flex-direction: ${props => props.pinned ? 'row' : 'column'};
 
-  ${props => props.pinned ? `
-    display: flex;
+  @media (max-width: 768px) {
+    width: 100%;
     flex-direction: column;
-  ` : `
-    display: flex;
-    flex-direction: row;
-  `}
+  }
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   }
 `;
 
-const PinnedIcon = styled(FaThumbtack)`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: ${({ theme }) => theme.accentColor};
-  font-size: 1.2rem;
-`;
+const PostImage = styled.div`
+  width: ${props => props.pinned ? '40%' : '40%'};
+  height: ${props => props.pinned ? '300px' : '200px'};
+  background-image: url(${props => props.src || '/path/to/default-image.jpg'});
+  background-size: cover;
+  background-position: center;
+  position: relative;
 
-const PostImage = styled.img`
-  ${props => props.pinned ? `
+  @media (max-width: 768px) {
     width: 100%;
     height: 200px;
-  ` : `
-    width: 150px;
-    height: 150px;
-  `}
-  object-fit: cover;
+  }
 `;
 
 const PostContent = styled.div`
-  padding: 1rem;
+  padding: 1.5rem;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const PostTitle = styled.h2`
+  font-size: ${props => props.pinned ? '1.8rem' : '1.4rem'};
   color: ${({ theme }) => theme.primaryColor};
   margin-bottom: 0.5rem;
 `;
 
 const PostMeta = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   color: ${({ theme }) => theme.secondaryColor};
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
-const PostDate = styled.span``;
+const MetaItem = styled.span`
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 
-const ReadTime = styled.span``;
+  svg {
+    margin-right: 0.3rem;
+  }
+`;
+
+const PostDate = styled.span`
+  font-style: italic;
+`;
 
 const PostSummary = styled.p`
   color: ${({ theme }) => theme.textColor};
@@ -143,14 +152,28 @@ const PostTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 1rem;
 `;
 
 const Tag = styled.span`
-  background-color: ${({ theme }) => theme.accentColor};
-  color: ${({ theme }) => theme.textAlt};
-  padding: 0.2rem 0.5rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
+  color: ${({ theme }) => theme.accentColor};
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  &:not(:last-child)::after {
+    content: "·";
+    margin-left: 0.5rem;
+    color: ${({ theme }) => theme.textColor};
+  }
+`;
+
+const PinnedIcon = styled(FaThumbtack)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: ${({ theme }) => theme.accentColor};
+  font-size: 1.2rem;
+  z-index: 1;
 `;
 
 const Pagination = styled.div`
@@ -228,7 +251,7 @@ const blogPosts = [
     tags: ["Computer Science", "Algorithms", "Complexity Analysis"],
     link: "/blogPost/BigONotation",
     pinned: true
-},
+  },
 ];
 
 const POSTS_PER_PAGE = 5;
@@ -280,6 +303,11 @@ const Blog = () => {
     pageNumbers.push(i);
   }
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
+
   return (
     <BlogWrapper>
       <BlogHeader>
@@ -309,23 +337,32 @@ const Blog = () => {
         {currentPosts.length > 0 ? (
           currentPosts.map(post => (
             <PostBox key={post.id} pinned={post.pinned}>
+              
               {post.pinned && <PinnedIcon />}
-              <Link to={post.link}>
-                <PostImage src={post.image} alt={post.title} pinned={post.pinned} />
-                <PostContent>
-                  <PostTitle>{post.title}</PostTitle>
+              <PostImage src={post.image} alt=""/>
+              <PostContent>
+                <div>
+                <Link to={post.link}>
+                  <PostTitle pinned={post.pinned}>{post.title}</PostTitle>
                   <PostMeta>
-                    <PostDate>{new Date(post.date).toLocaleDateString()}</PostDate>
-                    <ReadTime>{calculateReadTime(post.summary)} min read</ReadTime>
+                    <MetaItem>
+                      <PostDate>{formatDate(post.date)}</PostDate>
+                    </MetaItem>
+                    <MetaItem>
+                      <FaClock />
+                      {calculateReadTime(post.summary)} min read
+                    </MetaItem>
                   </PostMeta>
                   <PostSummary>{post.summary}</PostSummary>
                   <PostTags>
-                    {post.tags.map(tag => (
-                      <Tag key={tag}>{tag}</Tag>
+                    {post.tags.map((tag, index) => (
+                      <Tag key={index}>#{tag}</Tag>
                     ))}
                   </PostTags>
-                </PostContent>
-              </Link>
+                  </Link>
+                </div>
+              </PostContent>
+              
             </PostBox>
           ))
         ) : (
